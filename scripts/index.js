@@ -35,10 +35,20 @@ cityEl.addEventListener('change', () => {
     weatherAPI.then((response) => response.json()).then((data) => {
       const forecastAPI = fetch(`${data.properties.forecast}`);
       forecastAPI.then((response) => response.json()).then((file) => {
-        console.log(file);
+        console.log(file.properties.periods);
+        file.properties.periods.forEach(element => {
+          const row = tbody.insertRow(-1);
+
+          const cell1 = row.insertCell(0);
+          cell1.innerHTML = element.name;
+          const cell2 = row.insertCell(1);
+          cell2.innerHTML = `Temperature ${element.temperature} Winds ${element.windDirection} ${element.windSpeed}`;
+          const cell3 = row.insertCell(2);
+          cell3.innerHTML = element.shortForecast;
+        });
       });
     });
-   
+   document.getElementById('cityTable').style.display = 'table';
 });
 
 function getLongAndLat(cities) {
