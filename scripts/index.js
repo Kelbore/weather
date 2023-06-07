@@ -27,6 +27,10 @@ cities.forEach((city) => {
 });
 
 cityEl.addEventListener('change', () => {
+   tbody.innerHTML = '';
+   if(cityEl.options[cityEl.selectedIndex].textContent == 'Select a City') {
+      document.getElementById('cityTable').style.display = none;
+   }
     const singleCity = cities.find(getLongAndLat);
         let long = singleCity.longitude;
         let lat = singleCity.latitude;
@@ -42,7 +46,7 @@ cityEl.addEventListener('change', () => {
           const cell1 = row.insertCell(0);
           cell1.innerHTML = element.name;
           const cell2 = row.insertCell(1);
-          cell2.innerHTML = `Temperature ${element.temperature} Winds ${element.windDirection} ${element.windSpeed}`;
+          cell2.innerHTML = `Temperature ${element.temperature} F Winds ${element.windDirection} ${element.windSpeed}`;
           const cell3 = row.insertCell(2);
           cell3.innerHTML = element.shortForecast;
         });
