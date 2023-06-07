@@ -15,6 +15,16 @@ let cities = [
        name: 'Snellville',
        latitude: 33.858390,
        longitude: -84.019973 
+    },
+    {
+      name: 'Athens',
+      latitude: 33.959480,
+      longitude: -83.380613
+    },
+    {
+      name: 'Tucker',
+      latitude: 33.854019,
+      longitude: -84.214801
     }
 ];
 
